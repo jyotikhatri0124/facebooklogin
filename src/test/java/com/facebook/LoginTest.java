@@ -21,26 +21,27 @@ public class LoginTest extends BaseClass{
     public void verifyLogin(String email,String password,boolean emailValid,boolean pwdValid){
         loginUtils= new LoginUtils();
         loginUtils.login(email,password);
-        System.out.println("login done");
-
 
         if(emailValid && pwdValid) {
             apiUtils= new ApiUtils();
             UserProfileResponse userProfileResponse=apiUtils.getUserProfileDetails(email);
             String expectedName = userProfileResponse.getUsername();
             loginUtils.verifyProfileName(expectedName);
-
         }else if(!pwdValid){
             loginUtils.verifyErrorName(DataConstants.PWD_INVALID_ERROR);
-
-
+        }else if(!emailValid){
+            loginUtils.verifyErrorName(DataConstants.PWD_INVALID_ERROR);
+        }else{
+            Assert.fail("Please provide valid input");
         }
     }
 
 
     @DataProvider(name = "login_data")
     public Object[][] getLoginData(){
-        Object[][] data={{"jkhatri0009@gmail.com","test@123",true,true},{"jkhatri0009@gmail.com","",true,false}};
+        Object[][] data={{"jkhatri0009@gmail.com","test@123",true,true},
+                {"jkhatri0009@gmail.com","",true,false},
+                {"jkhatri0009@gmail.com","",false,false}};
         return data;
     }
 
