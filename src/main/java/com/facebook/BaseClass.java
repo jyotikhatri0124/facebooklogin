@@ -35,9 +35,9 @@ public class BaseClass  {
         return driver;
     }
 
-    private String getUserProfileBase(){
+    public static String getUserProfileHost(){
          userProfileBase=configReader.login_service();
-         return  userProfileBase;
+         return userProfileBase;
     }
 
     @AfterMethod( alwaysRun = true)

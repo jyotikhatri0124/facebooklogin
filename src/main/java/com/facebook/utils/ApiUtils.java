@@ -1,6 +1,7 @@
 package com.facebook.utils;
 
 import com.facebook.BaseClass;
+import com.facebook.constants.URIConstants;
 import com.facebook.headers.UserProfileHeaders;
 import com.facebook.models.UserProfileResponse;
 import com.facebook.requestbuilder.FetchUserProfileRequest;
@@ -21,7 +22,7 @@ public class ApiUtils extends BaseClass {
     UserProfileResponse userProfileResponse;
 
     static {
-        USER_PROFILE_END_POINT="http://localhost:8080"+"/user-profile";
+        USER_PROFILE_END_POINT=getUserProfileHost()+ URIConstants.USER_PROFILE_END_POINT;
     }
 
 
