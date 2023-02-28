@@ -16,8 +16,9 @@ public class BaseClass  {
 
     @BeforeMethod(alwaysRun = true)
     public static void initDriver(){
-        String platform=System.getProperty("platform");
-
+    //String platform=System.getProperty("platform");
+        //Hardcoded platfrom value for now
+        String platform="web";
         if(platform.equalsIgnoreCase("web")){
             ChromeOptions options= new ChromeOptions();
             driver= new ChromeDriver(options);
